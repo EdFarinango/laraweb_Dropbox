@@ -7,7 +7,7 @@
             <div class="card">
                 <div class=" card-header card-body d-flex justify-content-between align-items-center">
                     Detalle del Portafolio
-                    <a href="{{route('portafolio')}}" class="btn btn-danger btn-sm">Regresar</a>
+                    <a href="{{ $portafolio -> getUrl ()}}" class="btn btn-danger btn-sm">Regresar</a>
                 </div>
             </div>
         </div>

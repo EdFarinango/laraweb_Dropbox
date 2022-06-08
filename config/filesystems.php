@@ -56,6 +56,14 @@ return [
             'throw' => false,
         ],
 
+        'dropbox' => [
+            'driver' => 'dropbox',
+            'key' => env('DROPBOX_APP_KEY'),
+            'secret' => env('DROPBOX_APP_SECRET'),
+            'authorization_token' => env('DROPBOX_ACCESS_TOKEN'),
+
+        ],
+
     ],
 
     /*
@@ -73,15 +81,11 @@ return [
         public_path('storage') => storage_path('app/public'),
     ],
 
-    'disks' => [
+
 
         // ...
 
-        'dropbox' => [
-            'driver' => 'dropbox',
-            'authorization_token' => env('DROPBOX_AUTH_TOKEN'),
-        ],
 
-    ],
+
 
 ];

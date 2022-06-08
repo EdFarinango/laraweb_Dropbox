@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Portafolio;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 
 
 class PortafolioController extends Controller
@@ -67,7 +69,10 @@ class PortafolioController extends Controller
             'nombre'=> request('nombre'),
             'descripcion'=> request('descripcion'),
             'categoria'=> request('categoria'),
-            'imagen'=> request()->file('imagen')->store('images','public'),
+            //'imagen'=> request()->file('imagen')->store('images','public'),
+
+            'imagen'=> request()->file('imagen')->store('images','dropbox'),
+
             'url'=> request('video')
         ]);
 
@@ -126,7 +131,9 @@ class PortafolioController extends Controller
                     'nombre'=> request('nombre'),
                     'descripcion'=> request('descripcion'),
                     'categoria'=> request('categoria'),
-                    'imagen'=> request()->file('imagen')->store('images','public'),
+                    //'imagen'=> request()->file('imagen')->store('images','public'),
+                    'imagen'=> request()->file('imagen')->store('images','dropbox'),
+
                     'url'=> request('video')
                 ]);
             }
@@ -155,7 +162,8 @@ class PortafolioController extends Controller
      */
     public function destroy(Portafolio $portafolio)
     {
-        Storage::disk('public')->delete($portafolio->imagen);
+        //Storage::disk('public')->delete($portafolio->imagen);
+        Storage::disk('dropbox')->delete($portafolio->imagen);
 
 
         $portafolio ->delete();
